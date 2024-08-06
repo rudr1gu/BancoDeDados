@@ -1,24 +1,24 @@
--- Criação da tabela
-CREATE TABLE clientes (
-    id INT PRIMARY KEY,
-    nome VARCHAR(100),
-    idade INT,
-    email VARCHAR(100)
+-- Tabela Postagem
+CREATE TABLE Postagem (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    titulo VARCHAR(100) NOT NULL,
+    conteudo TEXT NOT NULL,
+    imagem VARCHAR(255),
+    qntd_estrelas INT DEFAULT 0,
+    autor VARCHAR(100) NOT NULL,
+    tags VARCHAR(30),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
--- Inserção de dados na tabela
-INSERT INTO clientes (id, nome, idade, email)
-VALUES (1, 'João', 25, 'joao@email.com'),
-       (2, 'Maria', 30, 'maria@email.com');
-
--- Consulta dos dados na tabela
-SELECT * FROM clientes;
-
--- Atualização de um registro na tabela
-UPDATE clientes
-SET idade = 35
-WHERE id = 1;
-
--- Exclusão de um registro na tabela
-DELETE FROM clientes
-WHERE id = 2;
+-- Tabela Comentários
+CREATE TABLE Comentarios (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    id_postagem INT,
+    conteudo TEXT NOT NULL,
+    qntd_estrelas INT DEFAULT 0,
+    autor VARCHAR(100) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_postagem) REFERENCES Postagem(id) ON DELETE CASCADE
+);
