@@ -50,3 +50,22 @@ CREATE TABLE endereco_aluno(
     numero INT,
     complemento VARCHAR(30)
 );
+
+-- Tabela Professor
+CREATE TABLE professor(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(80),
+    email VARCHAR(100),
+    senha VARCHAR(30),
+    rg char(9),
+    cpf char(11),
+    cod_professor VARCHAR(80),
+    data_nascimento TIMESTAMP,
+    id_endereco INT,
+    telefone VARCHAR(13),
+    genero char(1),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_endereco) REFERENCES endereco_professor(id) ON DELETE CASCADE
+ 
+);
