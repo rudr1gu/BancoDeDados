@@ -69,3 +69,16 @@ CREATE TABLE professor(
     FOREIGN KEY (id_endereco) REFERENCES endereco_professor(id) ON DELETE CASCADE
  
 );
+
+CREATE TABLE curso(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    id_grade VARCHAR(),
+    professor VARCHAR(),
+    data_inicio TIMESTAMP,
+    duracao VARCHAR(),
+    id_turma INT FOREIGN key,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,    
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  FOREIGN KEY (id_turma) REFERENCES turma(id) ON DELETE CASCADE
+  FOREIGN KEY (id_grade) REFERENCES grade(id) ON DELETE CASCADE  
+);
