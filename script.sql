@@ -82,3 +82,16 @@ CREATE TABLE curso(
   FOREIGN KEY (id_turma) REFERENCES turma(id) ON DELETE CASCADE
   FOREIGN KEY (id_grade) REFERENCES grade(id) ON DELETE CASCADE  
 );
+
+-- Tabela Turma
+CREATE TABLE turma (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    turno VARCHAR(30),
+    modulo CHAR(5),
+    aluno VARCHAR(80),
+    id_professor INT,
+    curso VARCHAR(30),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_professor) REFERENCES professor(id) ON DELETE CASCADE
+);
