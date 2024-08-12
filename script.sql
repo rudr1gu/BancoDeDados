@@ -70,6 +70,7 @@ CREATE TABLE professor(
  
 );
 
+--Tabela Curso
 CREATE TABLE curso(
     id INT PRIMARY KEY AUTO_INCREMENT,
     id_grade VARCHAR(),
@@ -95,3 +96,11 @@ CREATE TABLE turma (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (id_professor) REFERENCES professor(id) ON DELETE CASCADE
 );
+
+--Tabela Grade
+create TABLE grade(
+    id INT PRIMARY key AUTO_INCREMENT,
+    curso VARCHAR(60),
+    carga_horaria INT,
+);
+ 
